@@ -1,3 +1,3 @@
-["Live Site"](https://bridger-sanders.github.io/creative-coding-ii/final_project)
+["Live Site"](https://Bridger-Sanders.github.io/Creative-Coding-II/final_project/)
 # Creative Coding II
 ## Final Project
