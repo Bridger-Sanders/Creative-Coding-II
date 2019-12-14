@@ -1,3 +1,3 @@
 # Creative Coding II
 ## Final Project
-### May have to copy & paste the final_project.pde contents in Processing.
+### To view, copy & paste the final_project.pde code into Processing.
