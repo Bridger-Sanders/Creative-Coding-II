@@ -1,7 +1,7 @@
 //INSTRUCTIONS------------------------------------------------------------------------
   //Press j to jump
   //Land on platforms
-  //Score resets if you fall past bottom or somehow knocked too far left.
+  //Score resets if you fall past bottom
 //VARIABLES---------------------------------------------------------------------------
 //avatar
 int aX = 1350/8;
@@ -22,11 +22,10 @@ float py1 = random(150, 350);
 float py2 = random(250, 550);
 float py3 = random(350, 550);
 float py4 = random(450);//Adjust if needed: int py4 = 450;
-float P1 = random(0, 2);
 int pxW = 1350/4;
 int pyH = 25;
 int pxS = 9;
-
+boolean jumping = false;
 
 
 //SETUP-------------------------------------------------------------------------------
@@ -83,4 +82,77 @@ void draw(){
     px4 = 1350;
     py4 = ph4[(int) random(0)];
   }
+  //COLLISION DETECTION & PHYSICS-----------------------------------------------------
+    aY += aG;
+    if (aX + aW > px1 && 
+        aX < px1 + pxW && 
+        aY + aH + aG > (py1 - 5) && 
+        aY + aG < (py1 - 5) + pyH) {
+    aG = 0;
+    jumping = false;
+    }
+    else if (aX + aW + aG > (px1 - 5) && 
+            aX + aG < (px1 - 5) + pxW && 
+            aY + aH > py1 && 
+            aY < py1 + pyH) {
+    aX += -10;
+    }
+    else if (aX + aW > px2 && 
+        aX < px2 + pxW && 
+        aY + aH + aG > (py2 - 5) && 
+        aY + aG < (py2 - 5) + pyH) {
+    aG = 0;
+    jumping = false;
+    }
+    else if (aX + aW + aG > (px2 - 5) && 
+            aX + aG < (px2 - 5) + pxW && 
+            aY + aH > py2 && 
+            aY < py2 + pyH) {
+    aX += -10;
+    }
+    else if (aX + aW > px3 && 
+        aX < px3 + pxW && 
+        aY + aH + aG > (py3 - 5) && 
+        aY + aG < (py3 - 5) + pyH) {
+    aG = 0;
+    jumping = false;
+    }
+    else if (aX + aW + aG > (px3 - 5) && 
+            aX + aG < (px3 - 5) + pxW && 
+            aY + aH > py3 && 
+            aY < py3 + pyH) {
+    aX += -10;
+    }
+    else if (aX + aW > px4 && 
+        aX < px4 + pxW && 
+        aY + aH + aG > (py4 - 5) && 
+        aY + aG < (py4 - 5) + pyH) {
+    aG = 0;
+    jumping = false;
+    }
+    else if (aX + aW + aG > (px4 - 5) && 
+            aX + aG < (px4 - 5) + pxW && 
+            aY + aH > py4 && 
+            aY < py4 + pyH) {
+    aX += -10;
+    }
+    else if (aY + aH > 650) {
+    //aY = height - aH;
+    //aG = 0;
+    //jumping = false;
+    aY = 650/8;
+    aX = 1350/8;
+    jumping = true;
+    }
+    else {
+    aG ++;
+    }
+    if (keyPressed){
+      if (key ==  'j' || key == 'J'){
+        if (!jumping) {
+          aG = -20;
+          jumping = true;
+        }
+      }
+    }
 }
