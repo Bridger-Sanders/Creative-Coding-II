@@ -1,7 +1,7 @@
 //INSTRUCTIONS------------------------------------------------------------------------
   //Press j to jump
   //Land on platforms
-  //Score resets if you fall past bottom
+  //Score resets if you fall past bottom or somehow knocked too far left.
 //VARIABLES---------------------------------------------------------------------------
 //avatar
 int aX = 1350/8;
@@ -13,7 +13,7 @@ int aG = 0;
 int[] ph1 = {150, 250, 350};
 int[] ph2 = {250, 350, 450, 550};
 int[] ph3 = {350, 450, 550};
-int[] ph4 = {150, 250, 350};
+int[] ph4 = {350};
 int px1 = 1350 - (1312 - 34);
 int px2 = 1350 - (875 - 23);
 int px3 = 1350 - (437 - 11);
@@ -32,8 +32,7 @@ int pxS = 9;
 //SETUP-------------------------------------------------------------------------------
 void setup(){
   size(1350, 650);
-  frameRate(20);
-  size(1350, 650);
+  frameRate(60);
 }
 
 //DRAW--------------------------------------------------------------------------------
@@ -47,14 +46,41 @@ void draw(){
   fill(153,164,199);
   rect(aX, aY, 25, 25);
   //PLATFORM 1-------------------------------------------------------------------------
-  stroke(174,201,212);
-  strokeWeight(5);
-  fill(144,133,185);
+  //appear
   rect(px1, py1, pxW, pyH);
-  
+  //move left
   px1 -= pxS;
   if (px1 <= -pxW){
     px1 = 1350;
     py1 = ph1[(int) random(0, 2)];
+  }
+
+  //PLATFORM 2------------------------------------------------------------------------
+  //appear
+  rect(px2, py2, pxW, pyH);
+  //move left
+  px2 -= pxS;
+  if (px2 <= -pxW){
+    px2 = 1350;
+    py2 = ph2[(int) random(0, 3)];
+  }
+
+  //PLATFORM 3------------------------------------------------------------------------
+  //appear
+  rect(px3, py3, pxW, pyH);
+  //move left
+  px3 -= pxS;
+  if (px3 <= -pxW){
+    px3 = 1350;
+    py3 = ph3[(int) random(0, 2)];
+  }
+  //PLATFORM 4------------------------------------------------------------------------
+  //appear
+  rect(px4, py4, pxW, pyH);
+  //move left
+  px4 -= pxS;
+  if (px4 <= -pxW){
+    px4 = 1350;
+    py4 = ph4[(int) random(0)];
   }
 }
