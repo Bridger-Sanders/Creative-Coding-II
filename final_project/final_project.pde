@@ -1,7 +1,7 @@
 //INSTRUCTIONS------------------------------------------------------------------------
   //Press j to jump
-  //Land on platforms
-  //Score resets if you fall past bottom
+  //Jump to land on platforms
+  //Score resets if you fall past bottom or move too far left
 //VARIABLES---------------------------------------------------------------------------
 //avatar
 int aX = 1350/8;
@@ -21,10 +21,11 @@ int px4 = 1350;
 float py1 = random(150, 350);
 float py2 = random(250, 550);
 float py3 = random(350, 550);
-float py4 = random(450);//Adjust if needed: int py4 = 450;
+float py4 = random(350, 450);//Adjust if needed: int py4 = 450;
 int pxW = 1350/4;
 int pyH = 25;
 int pxS = 9;
+int i = 0;
 boolean jumping = false;
 
 
@@ -154,5 +155,19 @@ void draw(){
           jumping = true;
         }
       }
+    }
+    PFont f = createFont("Impact", 20);
+    String s = "Score: ";
+    fill(196,226,221);
+    textFont(f);
+    textSize(20);
+    text(s + i, 10, 30);
+    if (i < 999999999){
+      i++;
+    } 
+    if (aY >= 610){
+      i = 0;
+    }else if (aX <= 0){
+      i = 0;
     }
 }
